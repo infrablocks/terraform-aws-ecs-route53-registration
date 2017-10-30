@@ -67,7 +67,7 @@ module "ecs_load_balancer" {
 }
 
 module "ecs_service" {
-  source = "../../../src"
+  source = "../../../"
 
   component = "${var.component}"
   deployment_identifier = "${var.deployment_identifier}"
