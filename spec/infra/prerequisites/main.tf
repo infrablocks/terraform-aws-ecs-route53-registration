@@ -1,5 +1,11 @@
+resource "aws_iam_server_certificate" "service" {
+  name = "wildcard-certificate-${var.component}-${var.deployment_identifier}"
+  private_key = "${file(var.service_certificate_private_key)}"
+  certificate_body = "${file(var.service_certificate_body)}"
+}
+
 module "base_network" {
-  source = "git@github.com:infrablocks/terraform-aws-base-networking.git//src"
+  source = "git@github.com:infrablocks/terraform-aws-base-networking.git?ref=0.1.16//src"
 
   vpc_cidr = "${var.vpc_cidr}"
   region = "${var.region}"
@@ -8,19 +14,13 @@ module "base_network" {
   component = "${var.component}"
   deployment_identifier = "${var.deployment_identifier}"
 
-  bastion_ami = "${var.bastion_ami}"
-  bastion_ssh_public_key_path = "${var.bastion_ssh_public_key_path}"
-  bastion_ssh_allow_cidrs = "${var.bastion_ssh_allow_cidrs}"
-
-  domain_name = "${var.domain_name}"
-  public_zone_id = "${var.public_zone_id}"
   private_zone_id = "${var.private_zone_id}"
 
   infrastructure_events_bucket = "${var.infrastructure_events_bucket}"
 }
 
 module "ecs_cluster" {
-  source = "git@github.com:infrablocks/terraform-aws-ecs-cluster.git//src"
+  source = "git@github.com:infrablocks/terraform-aws-ecs-cluster.git?ref=0.2.1//src"
 
   region = "${var.region}"
   vpc_id = "${module.base_network.vpc_id}"
@@ -39,35 +39,8 @@ module "ecs_cluster" {
   cluster_desired_capacity = "${var.cluster_desired_capacity}"
 }
 
-module "ecs_load_balancer" {
-  source = "git@github.com:infrablocks/terraform-aws-ecs-load-balancer.git//src"
-
-  component = "${var.component}"
-  deployment_identifier = "${var.deployment_identifier}"
-
-  region = "${var.region}"
-  vpc_id = "${module.base_network.vpc_id}"
-  subnet_ids = "${split(",", module.base_network.public_subnet_ids)}"
-
-  service_name = "${var.service_name}"
-  service_port = "${var.service_port}"
-
-  service_certificate_arn = "${aws_iam_server_certificate.service.arn}"
-
-  domain_name = "${var.domain_name}"
-  public_zone_id = "${var.public_zone_id}"
-  private_zone_id = "${var.private_zone_id}"
-
-  allow_cidrs = "${split(",", var.elb_https_allow_cidrs)}"
-
-  health_check_target = "${var.elb_health_check_target}"
-
-  expose_to_public_internet = "yes"
-  include_public_dns_record = "yes"
-}
-
 module "ecs_service" {
-  source = "../../../"
+  source = "git@github.com:infrablocks/terraform-aws-ecs-service.git?ref=0.1.8//src"
 
   component = "${var.component}"
   deployment_identifier = "${var.deployment_identifier}"
@@ -87,7 +60,6 @@ module "ecs_service" {
   service_deployment_maximum_percent = "${var.service_deployment_maximum_percent}"
   service_deployment_minimum_healthy_percent = "${var.service_deployment_minimum_healthy_percent}"
 
-  service_elb_name = "${module.ecs_load_balancer.name}"
   service_role = "${var.service_role}"
   service_volumes  ="${var.service_volumes}"
 

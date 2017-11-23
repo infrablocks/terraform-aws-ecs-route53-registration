@@ -14,10 +14,6 @@ output "private_subnet_ids" {
   value = "${module.base_network.private_subnet_ids}"
 }
 
-output "load_balancer_name" {
-  value = "${module.ecs_load_balancer.name}"
-}
-
 output "cluster_id" {
   value = "${module.ecs_cluster.cluster_id}"
 }
@@ -48,12 +44,4 @@ output "service_role_arn" {
 
 output "service_role_id" {
   value = "${module.ecs_cluster.service_role_id}"
-}
-
-output "task_definition_arn" {
-  value = "${module.ecs_service.task_definition_arn}"
-}
-
-output "task_role_arn" {
-  value = "${aws_iam_role.task_role.arn}"
 }

@@ -34,6 +34,9 @@ end
 namespace :dependencies do
   namespace :install do
     task :ecs_route53_registration_lambda => ['virtualenv:ensure'] do
+      puts 'Running unit tests for ecs_route53_registration lambda'
+      puts
+
       sh_with_virtualenv(
           'pip install -r lambdas/ecs_route53_registration/requirements.txt')
     end
@@ -45,6 +48,9 @@ end
 namespace :test do
   namespace :unit do
     task :ecs_route53_registration_lambda => ['dependencies:install:all'] do
+      puts 'Running integration tests'
+      puts
+
       sh_with_virtualenv(
           'python -m unittest discover -s ./lambdas/ecs_route53_registration')
     end
@@ -62,19 +68,39 @@ namespace :test do
 end
 
 namespace :deployment do
-  RakeTerraform.define_command_tasks do |t|
-    t.argument_names = [:deployment_identifier]
+  namespace :prerequisites do
+    RakeTerraform.define_command_tasks do |t|
+      t.argument_names = [:deployment_identifier]
 
-    t.configuration_name = 'ECS Route53 registration module'
-    t.source_directory = configuration.source_directory
-    t.work_directory = configuration.work_directory
+      t.configuration_name = 'Preliminary infrastructure'
+      t.source_directory = configuration.for(:prerequisites).source_directory
+      t.work_directory = configuration.for(:prerequisites).work_directory
 
-    t.state_file = configuration.state_file
+      t.state_file = configuration.for(:prerequisites).state_file
 
-    t.vars = lambda do |args|
-      configuration
-          .vars_for(args)
-          .to_h
+      t.vars = lambda do |args|
+        configuration.for(:prerequisites, args)
+            .vars
+            .to_h
+      end
+    end
+  end
+
+  namespace :harness do
+    RakeTerraform.define_command_tasks do |t|
+      t.argument_names = [:deployment_identifier]
+
+      t.configuration_name = 'ECS Route53 registration module'
+      t.source_directory = configuration.for(:harness).source_directory
+      t.work_directory = configuration.for(:harness).work_directory
+
+      t.state_file = configuration.for(:harness).state_file
+
+      t.vars = lambda do |args|
+        configuration.for(:harness, args)
+            .vars
+            .to_h
+      end
     end
   end
 end
