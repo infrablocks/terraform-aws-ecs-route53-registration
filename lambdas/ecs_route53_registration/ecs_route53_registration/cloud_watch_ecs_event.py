@@ -4,3 +4,6 @@ class CloudWatchECSEvent(object):
 
     def cluster_arn(self):
         return self.event['detail']['clusterArn']
+
+    def container_instance_arn(self):
+        return self.event['detail']['containerInstanceArn']
