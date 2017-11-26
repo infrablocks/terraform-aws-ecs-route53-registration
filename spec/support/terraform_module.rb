@@ -9,7 +9,9 @@ module TerraformModule
     end
 
     def output_with_name(name)
-      RubyTerraform.output(name: name, state: configuration.state_file)
+      RubyTerraform.output(
+          name: name,
+          state: configuration.for(:harness).state_file)
     end
 
     def provision_for(role, vars = nil)

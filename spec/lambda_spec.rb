@@ -1,9 +1,21 @@
 require 'spec_helper'
 
-describe 'IAM policies, profiles and roles' do
+describe 'Lambdas' do
   include_context :terraform
 
-  it 'tests' do
-    expect(1).to(eq(1))
+  let(:region) {vars.region}
+  let(:deployment_identifier) {vars.deployment_identifier}
+
+  context 'ECS Route53 registration lambda' do
+    subject {
+      lambda("ecs-route53-registration-lambda-#{region}-#{deployment_identifier}")
+    }
+
+    its(:runtime) {should eq('python3.6')}
+    its(:handler) {should eq('ecs_route53_registration.amend_route53_for')}
+    its(:timeout) {should eq(300)}
+    its(:role) do
+      should eq(output_with_name('lambda_role_arn'))
+    end
   end
 end
