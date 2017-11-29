@@ -8,10 +8,10 @@ module TerraformModule
       @configuration ||= Configuration.new
     end
 
-    def output_with_name(name)
+    def output_for(role, name)
       RubyTerraform.output(
           name: name,
-          state: configuration.for(:harness).state_file)
+          state: configuration.for(role).state_file)
     end
 
     def provision_for(role, vars = nil)

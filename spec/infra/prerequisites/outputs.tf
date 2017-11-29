@@ -14,7 +14,7 @@ output "private_subnet_ids" {
   value = "${module.base_network.private_subnet_ids}"
 }
 
-output "cluster_id" {
+output "cluster_arn" {
   value = "${module.ecs_cluster.cluster_id}"
 }
 
