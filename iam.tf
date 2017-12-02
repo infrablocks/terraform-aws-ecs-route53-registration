@@ -14,6 +14,8 @@ data "aws_iam_policy_document" "ecs_route53_registration_lambda_role_policy_docu
   statement {
     actions = [
       "logs:CreateLogGroup",
+      "logs:CreateLogStream",
+      "logs:PutLogEvents"
     ]
 
     resources = ["*"]
