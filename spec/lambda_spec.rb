@@ -12,7 +12,7 @@ describe 'Lambdas' do
     }
 
     its(:runtime) {should eq('python3.6')}
-    its(:handler) {should eq('ecs_route53_registration.amend_route53_for')}
+    its(:handler) {should eq('ecs_route53_registration_lambda.amend_route53_for')}
     its(:timeout) {should eq(300)}
     its(:role) do
       should eq(output_for(:harness, 'lambda_role_arn'))

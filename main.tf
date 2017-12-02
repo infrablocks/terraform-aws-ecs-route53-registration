@@ -10,7 +10,7 @@ resource "aws_lambda_function" "ecs_route53_registration" {
   filename = "${data.archive_file.ecs_route53_registration_lambda_contents.output_path}"
   source_code_hash = "${data.archive_file.ecs_route53_registration_lambda_contents.output_base64sha256}"
 
-  handler = "ecs_route53_registration.amend_route53_for"
+  handler = "ecs_route53_registration_lambda.amend_route53_for"
 
   runtime = "python3.6"
   timeout = 300
