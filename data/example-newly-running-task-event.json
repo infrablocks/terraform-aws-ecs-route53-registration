@@ -1,0 +1,40 @@
+{
+  "version": "0",
+  "id": "bace693a-28a5-564b-e40e-a65450bc83c5",
+  "detail-type": "ECS Task State Change",
+  "source": "aws.ecs",
+  "account": "579878096224",
+  "time": "2017-12-02T23:15:41Z",
+  "region": "eu-west-2",
+  "resources": [
+    "arn:aws:ecs:eu-west-2:579878096224:task/1de835c4-78bf-4cef-908a-c6ec31ba5372"
+  ],
+  "detail": {
+    "clusterArn": "arn:aws:ecs:eu-west-2:579878096224:cluster/test-staythere-test-cluster",
+    "containerInstanceArn": "arn:aws:ecs:eu-west-2:579878096224:container-instance/cc056397-be81-46e9-84d2-46e1bf7a7a2a",
+    "containers": [
+      {
+        "containerArn": "arn:aws:ecs:eu-west-2:579878096224:container/9babb167-e66d-45e8-a987-d1788c3270e3",
+        "lastStatus": "RUNNING",
+        "name": "service-1",
+        "taskArn": "arn:aws:ecs:eu-west-2:579878096224:task/1de835c4-78bf-4cef-908a-c6ec31ba5372"
+      }
+    ],
+    "createdAt": "2017-12-02T23:15:39.082Z",
+    "desiredStatus": "RUNNING",
+    "group": "service:service-1",
+    "lastStatus": "PENDING",
+    "overrides": {
+      "containerOverrides": [
+        {
+          "name": "service-1"
+        }
+      ]
+    },
+    "startedBy": "ecs-svc/9223370524860812163",
+    "updatedAt": "2017-12-02T23:15:41.864Z",
+    "taskArn": "arn:aws:ecs:eu-west-2:579878096224:task/1de835c4-78bf-4cef-908a-c6ec31ba5372",
+    "taskDefinitionArn": "arn:aws:ecs:eu-west-2:579878096224:task-definition/service-1-test-staythere:1",
+    "version": 2
+  }
+}

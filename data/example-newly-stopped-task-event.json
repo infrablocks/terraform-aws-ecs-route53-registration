@@ -1,0 +1,43 @@
+{
+  "version": "0",
+  "id": "fa73fbbe-40db-e92d-8eb0-3c5fb11c756d",
+  "detail-type": "ECS Task State Change",
+  "source": "aws.ecs",
+  "account": "579878096224",
+  "time": "2017-12-02T23:33:45Z",
+  "region": "eu-west-2",
+  "resources": [
+    "arn:aws:ecs:eu-west-2:579878096224:task/e43fd0db-c7f9-47b3-9d08-f685906327d5"
+  ],
+  "detail": {
+    "clusterArn": "arn:aws:ecs:eu-west-2:579878096224:cluster/test-staythere-test-cluster",
+    "containerInstanceArn": "arn:aws:ecs:eu-west-2:579878096224:container-instance/0928c95b-795e-4737-a29a-3afc3bef8138",
+    "containers": [
+      {
+        "containerArn": "arn:aws:ecs:eu-west-2:579878096224:container/e11d373d-4c84-496a-af92-e3abeaa32337",
+        "exitCode": 0,
+        "lastStatus": "STOPPED",
+        "name": "service-1",
+        "taskArn": "arn:aws:ecs:eu-west-2:579878096224:task/e43fd0db-c7f9-47b3-9d08-f685906327d5"
+      }
+    ],
+    "createdAt": "2017-11-29T22:21:03.592Z",
+    "desiredStatus": "STOPPED",
+    "group": "service:service-1",
+    "lastStatus": "RUNNING",
+    "overrides": {
+      "containerOverrides": [
+        {
+          "name": "service-1"
+        }
+      ]
+    },
+    "startedAt": "2017-11-29T22:21:11.314Z",
+    "startedBy": "ecs-svc/9223370524860812163",
+    "stoppedReason": "Scaling activity initiated by (deployment ecs-svc/9223370524860812163)",
+    "updatedAt": "2017-12-02T23:33:45.332Z",
+    "taskArn": "arn:aws:ecs:eu-west-2:579878096224:task/e43fd0db-c7f9-47b3-9d08-f685906327d5",
+    "taskDefinitionArn": "arn:aws:ecs:eu-west-2:579878096224:task-definition/service-1-test-staythere:1",
+    "version": 6
+  }
+}
