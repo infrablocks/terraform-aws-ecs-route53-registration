@@ -39,5 +39,24 @@ class TestBasic(unittest.TestCase):
             event.service_name(),
             service_name)
 
+    def test_is_for_service_if_service_name_matches(self):
+        target_service = 'target-service'
+        event_content = cloud_watch_ecs_event_content_for(
+            group='service:%s' % target_service)
+
+        event = CloudWatchECSEvent(event_content)
+
+        self.assertTrue(event.pertains_to_service(target_service))
+
+    def test_is_not_for_service_if_service_name_does_not_match(self):
+        target_service = 'target-service'
+        different_service = 'different-service'
+        event_content = cloud_watch_ecs_event_content_for(
+            group='service:%s' % different_service)
+
+        event = CloudWatchECSEvent(event_content)
+
+        self.assertFalse(event.pertains_to_service(target_service))
+
 if __name__ == '__main__':
     unittest.main()

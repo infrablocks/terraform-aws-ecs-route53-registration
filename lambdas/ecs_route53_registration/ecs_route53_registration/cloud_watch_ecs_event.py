@@ -10,3 +10,6 @@ class CloudWatchECSEvent(object):
 
     def service_name(self):
         return self.event['detail']['group'].partition(':')[2]
+
+    def pertains_to_service(self, service_name):
+        return self.service_name() == service_name
