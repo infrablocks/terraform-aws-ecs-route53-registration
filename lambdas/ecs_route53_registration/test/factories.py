@@ -1,4 +1,4 @@
-def cloud_watch_ecs_event_for(**kwargs):
+def cloud_watch_ecs_event_content_for(**kwargs):
    cluster_arn = kwargs.get(
        'cluster_arn',
        'arn:aws:ecs:eu-west-1:111122223333:cluster/cluster')

@@ -20,14 +20,14 @@ def amend_route53_for(event, context):
         cloud_watch_ecs_event.container_instance_arn(),
         cloud_watch_ecs_event.cluster_arn())
 
-    # if event corresponds to the service we are managing
-    #   if event indicates a newly running task or
-    #      event indicates a newly stopped task
-    #     determine running tasks
-    #     determine DNS name for each task
-    #       fetch instance details
-    #       populate DNS template
-    #     add/update record in Route53
+    # if event corresponds to the service we are managing and
+    #    (event indicates a newly running task or
+    #     event indicates a newly stopped task)
+    #   determine running tasks
+    #   determine DNS name for each task
+    #     fetch instance details
+    #     populate DNS template
+    #   add/update record in Route53
     # else
     #   ignore
 

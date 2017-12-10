@@ -7,3 +7,6 @@ class CloudWatchECSEvent(object):
 
     def container_instance_arn(self):
         return self.event['detail']['containerInstanceArn']
+
+    def service_name(self):
+        return self.event['detail']['group'].partition(':')[2]
