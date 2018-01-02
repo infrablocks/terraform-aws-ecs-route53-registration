@@ -1,0 +1,146 @@
+{
+  "Reservations": [
+    {
+      "Groups": [],
+      "Instances": [
+        {
+          "AmiLaunchIndex": 0,
+          "ImageId": "ami-8fcc32f6",
+          "InstanceId": "i-03f6cc1d9af712e44",
+          "InstanceType": "t2.medium",
+          "KeyName": "cluster-environment-neodymium-default",
+          "LaunchTime": "2017-12-31T23:00:32.000Z",
+          "Monitoring": {
+            "State": "enabled"
+          },
+          "Placement": {
+            "AvailabilityZone": "eu-west-1a",
+            "GroupName": "",
+            "Tenancy": "default"
+          },
+          "PrivateDnsName": "ip-10-0-0-139.eu-west-1.compute.internal",
+          "PrivateIpAddress": "10.0.0.139",
+          "ProductCodes": [],
+          "PublicDnsName": "ec2-34-243-52-66.eu-west-1.compute.amazonaws.com",
+          "PublicIpAddress": "34.243.52.66",
+          "State": {
+            "Code": 16,
+            "Name": "running"
+          },
+          "StateTransitionReason": "",
+          "SubnetId": "subnet-06888c61",
+          "VpcId": "vpc-9ed1cef9",
+          "Architecture": "x86_64",
+          "BlockDeviceMappings": [
+            {
+              "DeviceName": "/dev/xvda",
+              "Ebs": {
+                "AttachTime": "2017-12-31T23:00:33.000Z",
+                "DeleteOnTermination": true,
+                "Status": "attached",
+                "VolumeId": "vol-0ac6c77a9b4e47ffe"
+              }
+            },
+            {
+              "DeviceName": "/dev/xvdcz",
+              "Ebs": {
+                "AttachTime": "2017-12-31T23:00:33.000Z",
+                "DeleteOnTermination": true,
+                "Status": "attached",
+                "VolumeId": "vol-07606eed4b320f9f4"
+              }
+            }
+          ],
+          "ClientToken": "b46582bb-386d-d2f2-dde5-af10199d81bc_subnet-06888c61_1",
+          "EbsOptimized": false,
+          "EnaSupport": true,
+          "Hypervisor": "xen",
+          "IamInstanceProfile": {
+            "Arn": "arn:aws:iam::579878096224:instance-profile/cluster-instance-profile-environment-neodymium-default",
+            "Id": "AIPAIEMTQZFFGSQ6YDSPQ"
+          },
+          "NetworkInterfaces": [
+            {
+              "Association": {
+                "IpOwnerId": "amazon",
+                "PublicDnsName": "ec2-34-243-52-66.eu-west-1.compute.amazonaws.com",
+                "PublicIp": "34.243.52.66"
+              },
+              "Attachment": {
+                "AttachTime": "2017-12-31T23:00:32.000Z",
+                "AttachmentId": "eni-attach-1aa8d5fa",
+                "DeleteOnTermination": true,
+                "DeviceIndex": 0,
+                "Status": "attached"
+              },
+              "Description": "",
+              "Groups": [
+                {
+                  "GroupName": "environment-neodymium-default",
+                  "GroupId": "sg-d9d0e4a2"
+                }
+              ],
+              "Ipv6Addresses": [],
+              "MacAddress": "02:2d:25:20:22:54",
+              "NetworkInterfaceId": "eni-523acf7c",
+              "OwnerId": "579878096224",
+              "PrivateDnsName": "ip-10-0-0-139.eu-west-1.compute.internal",
+              "PrivateIpAddress": "10.0.0.139",
+              "PrivateIpAddresses": [
+                {
+                  "Association": {
+                    "IpOwnerId": "amazon",
+                    "PublicDnsName": "ec2-34-243-52-66.eu-west-1.compute.amazonaws.com",
+                    "PublicIp": "34.243.52.66"
+                  },
+                  "Primary": true,
+                  "PrivateDnsName": "ip-10-0-0-139.eu-west-1.compute.internal",
+                  "PrivateIpAddress": "10.0.0.139"
+                }
+              ],
+              "SourceDestCheck": true,
+              "Status": "in-use",
+              "SubnetId": "subnet-06888c61",
+              "VpcId": "vpc-9ed1cef9"
+            }
+          ],
+          "RootDeviceName": "/dev/xvda",
+          "RootDeviceType": "ebs",
+          "SecurityGroups": [
+            {
+              "GroupName": "environment-neodymium-default",
+              "GroupId": "sg-d9d0e4a2"
+            }
+          ],
+          "SourceDestCheck": true,
+          "Tags": [
+            {
+              "Key": "ClusterName",
+              "Value": "default"
+            },
+            {
+              "Key": "DeploymentIdentifier",
+              "Value": "neodymium"
+            },
+            {
+              "Key": "Name",
+              "Value": "cluster-worker-environment-neodymium-default"
+            },
+            {
+              "Key": "Component",
+              "Value": "environment"
+            },
+            {
+              "Key": "aws:autoscaling:groupName",
+              "Value": "asg-environment-neodymium-default"
+            }
+          ],
+          "VirtualizationType": "hvm"
+        }
+      ],
+      "OwnerId": "579878096224",
+      "RequesterId": "226008221399",
+      "ReservationId": "r-0c7280dce4595bc6d"
+    }
+  ]
+}

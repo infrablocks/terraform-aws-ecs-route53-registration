@@ -10,7 +10,7 @@ configuration = Configuration.new
 
 RakeTerraform.define_installation_tasks(
     path: File.join(Dir.pwd, 'vendor', 'terraform'),
-    version: '0.10.8')
+    version: '0.11.1')
 
 task :default => 'test:all'
 

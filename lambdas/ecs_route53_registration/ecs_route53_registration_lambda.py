@@ -20,6 +20,8 @@ def amend_route53_for(event, context):
         cloud_watch_ecs_event.container_instance_arn(),
         cloud_watch_ecs_event.cluster_arn())
 
+
+
     # if event corresponds to the service we are managing and
     #    (event indicates a newly running task or
     #     event indicates a newly stopped task)
@@ -30,6 +32,19 @@ def amend_route53_for(event, context):
     #   add/update record in Route53
     # else
     #   ignore
+
+    # ECS_ROUTE53_REGISTRATION_SERVICE_NAME
+    # ECS_ROUTE53_REGISTRATION_HOSTED_ZONE_ID
+    # ECS_ROUTE53_REGISTRATION_RECORD_SET_NAME_TEMPLATE
+    # ECS_ROUTE53_REGISTRATION_RECORD_SET_IP_TYPE=("public" or "private")
+    
+    # ECS_ROUTE53_REGISTRATION_TASK_INTROSPECTION_NEEDED=("yes" or "no")
+    # ECS_ROUTE53_REGISTRATION_TASK_INTROSPECTION_PORT
+
+    # make task introspection optional
+    # allow public or private IP to be used in record
+    # communicate on private IP
+    # collect instances that have the same resolved hostname
 
     # types:
     #   CloudWatchECSEvent
@@ -43,6 +58,6 @@ def amend_route53_for(event, context):
     #     - tells us things about the container instance like IP address
     #   ECSTask
     #     - has many ECSContainerDefinitions
-    #   ECSContainerDefinition
+    #   ECSContainer
     #     - knows about what port the container listens on
     #

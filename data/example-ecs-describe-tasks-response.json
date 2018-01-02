@@ -1,0 +1,48 @@
+{
+  "tasks": [
+    {
+      "taskArn": "arn:aws:ecs:eu-west-1:579878096224:task/a70bdbce-8fe7-443a-a406-1aa8b3ea0a62",
+      "clusterArn": "arn:aws:ecs:eu-west-1:579878096224:cluster/cluster",
+      "taskDefinitionArn": "arn:aws:ecs:eu-west-1:579878096224:task-definition/nginx:8",
+      "containerInstanceArn": "arn:aws:ecs:eu-west-1:579878096224:container-instance/b0d8803e-b4eb-4296-bffe-400186b170bc",
+      "overrides": {
+        "containerOverrides": [
+          {
+            "name": "nginx"
+          }
+        ]
+      },
+      "lastStatus": "RUNNING",
+      "desiredStatus": "RUNNING",
+      "cpu": "0",
+      "memory": "384",
+      "containers": [
+        {
+          "containerArn": "arn:aws:ecs:eu-west-1:579878096224:container/b77ccbfb-6a39-4471-8f3b-a66243767ce6",
+          "taskArn": "arn:aws:ecs:eu-west-1:579878096224:task/a70bdbce-8fe7-443a-a406-1aa8b3ea0a62",
+          "name": "nginx",
+          "lastStatus": "RUNNING",
+          "networkBindings": [
+            {
+              "bindIP": "0.0.0.0",
+              "containerPort": 6789,
+              "hostPort": 6789,
+              "protocol": "tcp"
+            }
+          ],
+          "networkInterfaces": []
+        }
+      ],
+      "startedBy": "ecs-svc/9223370522030063782",
+      "version": 3,
+      "connectivity": "CONNECTED",
+      "connectivityAt": 1514827019.191,
+      "createdAt": 1514825005.396,
+      "startedAt": 1514825010.468,
+      "group": "service:nginx",
+      "launchType": "EC2",
+      "attachments": []
+    }
+  ],
+  "failures": []
+}

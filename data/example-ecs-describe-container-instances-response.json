@@ -1,0 +1,161 @@
+{
+  "containerInstances": [
+    {
+      "containerInstanceArn": "arn:aws:ecs:eu-west-1:579878096224:container-instance/b0d8803e-b4eb-4296-bffe-400186b170bc",
+      "ec2InstanceId": "i-03f6cc1d9af712e44",
+      "version": 166,
+      "versionInfo": {
+        "agentVersion": "1.14.4",
+        "agentHash": "f94beb4",
+        "dockerVersion": "DockerVersion: 17.03.2-ce"
+      },
+      "remainingResources": [
+        {
+          "name": "CPU",
+          "type": "INTEGER",
+          "doubleValue": 0.0,
+          "longValue": 0,
+          "integerValue": 2048
+        },
+        {
+          "name": "MEMORY",
+          "type": "INTEGER",
+          "doubleValue": 0.0,
+          "longValue": 0,
+          "integerValue": 3569
+        },
+        {
+          "name": "PORTS",
+          "type": "STRINGSET",
+          "doubleValue": 0.0,
+          "longValue": 0,
+          "integerValue": 0,
+          "stringSetValue": [
+            "22",
+            "2376",
+            "2375",
+            "6789",
+            "51678",
+            "51679"
+          ]
+        },
+        {
+          "name": "PORTS_UDP",
+          "type": "STRINGSET",
+          "doubleValue": 0.0,
+          "longValue": 0,
+          "integerValue": 0,
+          "stringSetValue": []
+        }
+      ],
+      "registeredResources": [
+        {
+          "name": "CPU",
+          "type": "INTEGER",
+          "doubleValue": 0.0,
+          "longValue": 0,
+          "integerValue": 2048
+        },
+        {
+          "name": "MEMORY",
+          "type": "INTEGER",
+          "doubleValue": 0.0,
+          "longValue": 0,
+          "integerValue": 3953
+        },
+        {
+          "name": "PORTS",
+          "type": "STRINGSET",
+          "doubleValue": 0.0,
+          "longValue": 0,
+          "integerValue": 0,
+          "stringSetValue": [
+            "22",
+            "2376",
+            "2375",
+            "51678",
+            "51679"
+          ]
+        },
+        {
+          "name": "PORTS_UDP",
+          "type": "STRINGSET",
+          "doubleValue": 0.0,
+          "longValue": 0,
+          "integerValue": 0,
+          "stringSetValue": []
+        }
+      ],
+      "status": "ACTIVE",
+      "agentConnected": true,
+      "runningTasksCount": 1,
+      "pendingTasksCount": 0,
+      "attributes": [
+        {
+          "name": "ecs.availability-zone",
+          "value": "eu-west-1a"
+        },
+        {
+          "name": "com.amazonaws.ecs.capability.logging-driver.syslog"
+        },
+        {
+          "name": "ecs.ami-id",
+          "value": "ami-8fcc32f6"
+        },
+        {
+          "name": "ecs.instance-type",
+          "value": "t2.medium"
+        },
+        {
+          "name": "com.amazonaws.ecs.capability.task-iam-role-network-host"
+        },
+        {
+          "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+        },
+        {
+          "name": "com.amazonaws.ecs.capability.docker-remote-api.1.24"
+        },
+        {
+          "name": "com.amazonaws.ecs.capability.logging-driver.json-file"
+        },
+        {
+          "name": "com.amazonaws.ecs.capability.privileged-container"
+        },
+        {
+          "name": "com.amazonaws.ecs.capability.docker-remote-api.1.17"
+        },
+        {
+          "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        },
+        {
+          "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+        },
+        {
+          "name": "com.amazonaws.ecs.capability.ecr-auth"
+        },
+        {
+          "name": "com.amazonaws.ecs.capability.docker-remote-api.1.20"
+        },
+        {
+          "name": "ecs.os-type",
+          "value": "linux"
+        },
+        {
+          "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
+        },
+        {
+          "name": "com.amazonaws.ecs.capability.docker-remote-api.1.22"
+        },
+        {
+          "name": "com.amazonaws.ecs.capability.task-iam-role"
+        },
+        {
+          "name": "com.amazonaws.ecs.capability.docker-remote-api.1.23"
+        }
+      ],
+      "registeredAt": 1514761296.537,
+      "attachments": []
+    }
+  ],
+  "failures": []
+}

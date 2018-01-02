@@ -1,6 +1,6 @@
 {
   "version": "0",
-  "id": "fa73fbbe-40db-e92d-8eb0-3c5fb11c756d",
+  "id": "edcbafb3-a948-7663-cee1-0f83b33f886c",
   "detail-type": "ECS Task State Change",
   "source": "aws.ecs",
   "account": "579878096224",
@@ -24,7 +24,7 @@
     "createdAt": "2017-11-29T22:21:03.592Z",
     "desiredStatus": "STOPPED",
     "group": "service:service-1",
-    "lastStatus": "RUNNING",
+    "lastStatus": "STOPPED",
     "overrides": {
       "containerOverrides": [
         {
@@ -34,10 +34,11 @@
     },
     "startedAt": "2017-11-29T22:21:11.314Z",
     "startedBy": "ecs-svc/9223370524860812163",
+    "stoppedAt": "2017-12-02T23:33:45.348Z",
     "stoppedReason": "Scaling activity initiated by (deployment ecs-svc/9223370524860812163)",
-    "updatedAt": "2017-12-02T23:33:45.332Z",
+    "updatedAt": "2017-12-02T23:33:45.348Z",
     "taskArn": "arn:aws:ecs:eu-west-2:579878096224:task/e43fd0db-c7f9-47b3-9d08-f685906327d5",
     "taskDefinitionArn": "arn:aws:ecs:eu-west-2:579878096224:task-definition/service-1-test-staythere:1",
-    "version": 6
+    "version": 7
   }
 }

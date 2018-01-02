@@ -11,5 +11,19 @@ class CloudWatchECSEvent(object):
     def service_name(self):
         return self.event['detail']['group'].partition(':')[2]
 
+    def last_status(self):
+        return self.event['detail']['lastStatus']
+
+    def desired_status(self):
+        return self.event['detail']['desiredStatus']
+
     def pertains_to_service(self, service_name):
         return self.service_name() == service_name
+
+    def represents_newly_running_task(self):
+        return self.last_status() == 'RUNNING' and \
+               self.desired_status() == 'RUNNING'
+
+    def represents_newly_stopped_task(self):
+        return self.last_status() == 'STOPPED' and \
+               self.desired_status() == 'STOPPED'

@@ -1,6 +1,6 @@
 {
   "version": "0",
-  "id": "bace693a-28a5-564b-e40e-a65450bc83c5",
+  "id": "71a2ea47-d7a7-9a46-b5f6-ff5a979ff826",
   "detail-type": "ECS Task State Change",
   "source": "aws.ecs",
   "account": "579878096224",
@@ -23,7 +23,7 @@
     "createdAt": "2017-12-02T23:15:39.082Z",
     "desiredStatus": "RUNNING",
     "group": "service:service-1",
-    "lastStatus": "PENDING",
+    "lastStatus": "RUNNING",
     "overrides": {
       "containerOverrides": [
         {
@@ -31,10 +31,11 @@
         }
       ]
     },
+    "startedAt": "2017-12-02T23:15:41.878Z",
     "startedBy": "ecs-svc/9223370524860812163",
-    "updatedAt": "2017-12-02T23:15:41.864Z",
+    "updatedAt": "2017-12-02T23:15:41.878Z",
     "taskArn": "arn:aws:ecs:eu-west-2:579878096224:task/1de835c4-78bf-4cef-908a-c6ec31ba5372",
     "taskDefinitionArn": "arn:aws:ecs:eu-west-2:579878096224:task-definition/service-1-test-staythere:1",
-    "version": 2
+    "version": 3
   }
 }

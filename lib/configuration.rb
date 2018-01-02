@@ -30,55 +30,44 @@ class Configuration
   end
 
   def prerequisites_parameters_for(args)
-    deployment_identifier = deployment_identifier_for(args)
-    source_directory = 'spec/infra/prerequisites'
-    configuration_directory = File.join(work_directory, source_directory)
-    state_file = Paths.from_project_root_directory('prerequisites.tfstate')
-    vars_template_file = ENV['PREREQUISITES_VARS_TEMPLATE_FILE'] ||
-        Paths.from_project_root_directory('config/vars/prerequisites.yml.erb')
-
     module_parameters_for(
-        deployment_identifier,
-        source_directory,
-        configuration_directory,
-        state_file,
-        vars_template_file)
+        deployment_identifier: deployment_identifier_for(args),
+        source_directory: Paths.join('spec', 'infra', 'prerequisites'),
+        work_directory: work_directory,
+        state_file: Paths.from_project_root_directory(
+            'state', 'prerequisites.tfstate'),
+        vars_template_file: (ENV['PREREQUISITES_VARS_TEMPLATE_FILE'] ||
+            Paths.from_project_root_directory(
+                'config', 'vars', 'prerequisites.yml.erb')))
   end
 
   def harness_parameters_for(args)
-    deployment_identifier = deployment_identifier_for(args)
-    source_directory = 'spec/infra/harness'
-    configuration_directory = File.join(work_directory, source_directory)
-    state_file = Paths.from_project_root_directory('harness.tfstate')
-    vars_template_file = ENV['HARNESS_VARS_TEMPLATE_FILE'] ||
-        Paths.from_project_root_directory('config/vars/harness.yml.erb')
-
     module_parameters_for(
-        deployment_identifier,
-        source_directory,
-        configuration_directory,
-        state_file,
-        vars_template_file)
+        deployment_identifier: deployment_identifier_for(args),
+        source_directory: Paths.join('spec', 'infra', 'harness'),
+        work_directory: work_directory,
+        state_file: Paths.from_project_root_directory(
+            'state', 'harness.tfstate'),
+        vars_template_file: (ENV['HARNESS_VARS_TEMPLATE_FILE'] ||
+            Paths.from_project_root_directory(
+                'config', 'vars', 'harness.yml.erb')))
   end
 
-  def module_parameters_for(
-      deployment_identifier,
-      source_directory,
-      configuration_directory,
-      state_file,
-      vars_template_file)
+  def module_parameters_for(parameters)
+    configuration_directory = File.join(
+        parameters[:work_directory],
+        parameters[:source_directory])
+    vars = Vars.load_from(parameters[:vars_template_file], {
+        project_directory: Paths.project_root_directory,
+        public_ip: PublicAddress.as_ip_address,
+        deployment_identifier: deployment_identifier
+    })
+
+    derived_parameters = {
+        configuration_directory: configuration_directory,
+        vars: vars
+    }.merge(parameters)
     OpenStruct.new(
-        {
-            deployment_identifier: deployment_identifier,
-            source_directory: source_directory,
-            work_directory: work_directory,
-            configuration_directory: configuration_directory,
-            state_file: state_file,
-            vars: Vars.load_from(vars_template_file, {
-                project_directory: Paths.project_root_directory,
-                public_ip: PublicAddress.as_ip_address,
-                deployment_identifier: deployment_identifier
-            })
-        })
+        derived_parameters)
   end
 end
