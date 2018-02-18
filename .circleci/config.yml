@@ -7,5 +7,6 @@ jobs:
     steps:
       - checkout
       - run: ./scripts/ci/common/install-git-crypt.sh
+      - run: ./scripts/ci/common/install-pyenv.sh
       - run: ./scripts/ci/steps/test.sh
       - run: ./scripts/ci/steps/release.sh
