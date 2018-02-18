@@ -40,4 +40,5 @@ class TestECSTask(unittest.TestCase):
 
         self.assertEqual(
             task_container_instance,
-            ECSContainerInstance(container_instance_arn, ecs, ec2, logger))
+            ECSContainerInstance(
+                cluster_arn, container_instance_arn, ecs, ec2, logger))

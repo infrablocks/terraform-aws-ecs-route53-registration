@@ -15,15 +15,18 @@ RakeTerraform.define_installation_tasks(
 task :default => 'test:all'
 
 namespace :virtualenv do
+  desc "Create virtualenv."
   task :create do
     mkdir_p 'vendor'
     sh 'virtualenv vendor/virtualenv --no-site-packages'
   end
 
+  desc "Destroy virtualenv."
   task :destroy do
     rm_rf 'vendor/virtualenv'
   end
 
+  desc "Ensure virtualenv is present."
   task :ensure do
     unless File.exists?('vendor/virtualenv')
       Rake::Task['virtualenv:create'].invoke
@@ -33,6 +36,7 @@ end
 
 namespace :dependencies do
   namespace :install do
+    desc "Install ECS Route53 lambda dependencies."
     task :ecs_route53_registration_lambda => ['virtualenv:ensure'] do
       puts 'Running unit tests for ecs_route53_registration lambda'
       puts
@@ -41,12 +45,14 @@ namespace :dependencies do
           'pip install -r lambdas/ecs_route53_registration/requirements.txt')
     end
 
+    desc "Install lambda dependencies."
     task :all => ['dependencies:install:ecs_route53_registration_lambda']
   end
 end
 
 namespace :test do
   namespace :unit do
+    desc "Unit test ECS Route53 lambda."
     task :ecs_route53_registration_lambda => ['dependencies:install:all'] do
       puts 'Running integration tests'
       puts
@@ -55,6 +61,7 @@ namespace :test do
           'python -m unittest discover -s ./lambdas/ecs_route53_registration')
     end
 
+    desc "Unit test lambdas."
     task :all => ['test:unit:ecs_route53_registration_lambda']
   end
 
@@ -64,6 +71,7 @@ namespace :test do
     end
   end
 
+  desc "Run all tests"
   task :all => %w(test:unit:all test:integration:all)
 end
 
