@@ -5,7 +5,7 @@ from test.factories import (cloud_watch_ecs_event_content_for)
 from ecs_route53_registration.cloud_watch_ecs_event import CloudWatchECSEvent
 
 
-class TestBasic(unittest.TestCase):
+class TestCloudWatchECSEvent(unittest.TestCase):
     def test_extracts_cluster_arn_from_event_detail(self):
         cluster_arn = 'arn:aws:ecs:eu-west-1:111122223333:cluster/some-cluster'
         event_content = cloud_watch_ecs_event_content_for(
@@ -119,6 +119,39 @@ class TestBasic(unittest.TestCase):
         event = CloudWatchECSEvent(event_content)
 
         self.assertFalse(event.represents_newly_stopped_task())
+
+    def test_represents_possible_task_ip_change_if_represents_newly_started_task(self):
+        last_status = 'RUNNING'
+        desired_status = 'RUNNING'
+        event_content = cloud_watch_ecs_event_content_for(
+            last_status=last_status,
+            desired_status=desired_status)
+
+        event = CloudWatchECSEvent(event_content)
+
+        self.assertTrue(event.represents_possible_task_ip_change())
+
+    def test_represents_possible_task_ip_change_if_represents_newly_stopped_task(self):
+        last_status = 'STOPPED'
+        desired_status = 'STOPPED'
+        event_content = cloud_watch_ecs_event_content_for(
+            last_status=last_status,
+            desired_status=desired_status)
+
+        event = CloudWatchECSEvent(event_content)
+
+        self.assertTrue(event.represents_possible_task_ip_change())
+
+    def test_does_not_represents_possible_task_ip_change_if_not_newly_started_or_stopped(self):
+        last_status = 'RUNNING'
+        desired_status = 'STOPPED'
+        event_content = cloud_watch_ecs_event_content_for(
+            last_status=last_status,
+            desired_status=desired_status)
+
+        event = CloudWatchECSEvent(event_content)
+
+        self.assertFalse(event.represents_possible_task_ip_change())
 
 if __name__ == '__main__':
     unittest.main()

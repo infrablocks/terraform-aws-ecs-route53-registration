@@ -27,3 +27,7 @@ class CloudWatchECSEvent(object):
     def represents_newly_stopped_task(self):
         return self.last_status() == 'STOPPED' and \
                self.desired_status() == 'STOPPED'
+
+    def represents_possible_task_ip_change(self):
+        return self.represents_newly_running_task() or \
+            self.represents_newly_stopped_task()

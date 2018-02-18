@@ -21,6 +21,12 @@ def random_alphanumeric_string(length=20):
         length)
 
 
+def random_uppercase_alphanumeric_string(length=20):
+    return random_string(
+        string.ascii_uppercase + string.digits,
+        length)
+
+
 def random_hexadecimal_string(length=20):
     return random_string(
         string.digits + 'abcdef',
@@ -75,6 +81,14 @@ def random_ec2_instance_id():
 def random_ip_address():
     return socket.inet_ntoa(
         struct.pack('>I', random.randint(1, 0xffffffff)))
+
+
+def random_hosted_zone_id():
+    return 'Z%s' % random_uppercase_alphanumeric_string(length=13)
+
+
+def random_fqdn():
+    return '%s.example.com' % random_hexadecimal_string(length=8)
 
 
 def cloud_watch_ecs_event_content_for(**kwargs):
