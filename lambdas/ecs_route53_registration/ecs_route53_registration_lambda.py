@@ -10,6 +10,7 @@ from ecs_route53_registration.validations import \
     ensure_one_of
 from ecs_route53_registration.cloud_watch_ecs_event import CloudWatchECSEvent
 from ecs_route53_registration.ecs_service import ECSService
+from ecs_route53_registration.route53_a_record_set import Route53ARecordSet
 
 logging.getLogger('botocore').setLevel(logging.CRITICAL)
 logging.getLogger('boto3').setLevel(logging.CRITICAL)
@@ -23,6 +24,7 @@ def amend_route53_for(event, context):
 
     ecs = boto3.client('ecs')
     ec2 = boto3.client('ec2')
+    route53 = boto3.client('route53')
 
     service_name = ensure_present(
         os.environ['SERVICE_NAME'],
@@ -59,10 +61,11 @@ def amend_route53_for(event, context):
                 ecs, ec2, logger)
             tasks = service.running_tasks()
             container_instances = \
-                (task.container_instance() for task in tasks)
+                list(task.container_instance()
+                     for task in tasks)
             ip_addresses = \
-                (container_instance['%s_ip' % record_set_ip_type]()
-                 for container_instance in container_instances)
+                list(container_instance['%s_ip' % record_set_ip_type]()
+                     for container_instance in container_instances)
 
             logger.info(
                 'Service has %s %s IP address(es): %s.',
@@ -85,21 +88,24 @@ def amend_route53_for(event, context):
                 record_set_name, record_set_ip_type, ip_addresses,
                 hosted_zone_id)
 
+            record_set = Route53ARecordSet(
+                record_set_name, ip_addresses, route53, logger)
+            record_set.synchronise_with(hosted_zone_id)
 
-            # if event corresponds to the service we are managing and
-            #    (event indicates a newly running task or
-            #     event indicates a newly stopped task)
-            #   determine running tasks
-            #   determine DNS name for each task
-            #     fetch instance details
-            #     populate DNS template
-            #   upsert/delete record in Route53
-            # else
-            #   ignore
+            logger.info('Synchronisation complete.')
 
-            # TASK_INTROSPECTION_NEEDED=("yes" or "no")
-            # TASK_INTROSPECTION_PORT
+        else:
+            logger.info(
+                'Event does not represent possible task IP change. '
+                'Ignoring.')
+    else:
+        logger.info(
+            'Event does not pertain to service %s. Ignoring.', service_name)
 
-            # make task introspection optional
-            # communicate on private IP
-            # collect instances that have the same resolved hostname
+    # allow task introspection to provide dynamic elements in DNS names
+    # allow different DNS names for a single service
+    #   group IP addresses by resulting record set names and create a record set
+    #   for each record set name
+
+    # TASK_INTROSPECTION_NEEDED=("yes" or "no")
+    # TASK_INTROSPECTION_PORT

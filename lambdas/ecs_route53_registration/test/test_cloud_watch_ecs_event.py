@@ -152,6 +152,3 @@ class TestCloudWatchECSEvent(unittest.TestCase):
         event = CloudWatchECSEvent(event_content)
 
         self.assertFalse(event.represents_possible_task_ip_change())
-
-if __name__ == '__main__':
-    unittest.main()

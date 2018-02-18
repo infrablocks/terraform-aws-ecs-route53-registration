@@ -78,6 +78,10 @@ def random_ec2_instance_id():
     return 'i-%s' % random_hexadecimal_string(length=17)
 
 
+def random_route53_change_id():
+    return random_hexadecimal_string(length=8)
+
+
 def random_ip_address():
     return socket.inet_ntoa(
         struct.pack('>I', random.randint(1, 0xffffffff)))
