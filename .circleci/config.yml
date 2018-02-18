@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/terraform-aws-ecs-load-balancer
+    working_directory: ~/terraform-aws-ecs-route53-registration
     docker:
       - image: ruby:2.3.1
     steps:
