@@ -17,4 +17,8 @@ set -e
 
 git crypt unlock
 
+export PATH="/root/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
 ./go release:tag
