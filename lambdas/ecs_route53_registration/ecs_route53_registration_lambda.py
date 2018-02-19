@@ -64,7 +64,8 @@ def amend_route53_for(event, context):
                 list(task.container_instance()
                      for task in tasks)
             ip_addresses = \
-                list(getattr(container_instance, '%s_ip' % record_set_ip_type)()
+                list(getattr(container_instance,
+                             '%s_ip_address' % record_set_ip_type)()
                      for container_instance in container_instances)
 
             logger.info(
