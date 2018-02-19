@@ -16,4 +16,13 @@ resource "aws_lambda_function" "ecs_route53_registration" {
   timeout = 300
 
   role = "${aws_iam_role.ecs_route53_registration_lambda_role.arn}"
+
+  environment {
+    variables {
+      SERVICE_NAME = "${var.service_name}"
+      HOSTED_ZONE_ID = "${var.hosted_zone_id}"
+      RECORD_SET_NAME_TEMPLATE = "${var.record_set_name_template}"
+      RECORD_SET_IP_TYPE = "${var.record_set_ip_type}"
+    }
+  }
 }

@@ -10,7 +10,7 @@ The ECS service requires:
 * An ECS cluster
 * An ECS service
 * Route53 zone(s)
- 
+
 The ECS Route53 registration consists of:
 * A lambda that listens to ECS events and registers containers into Route53
 
