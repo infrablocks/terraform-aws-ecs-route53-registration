@@ -18,3 +18,4 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 pyenv install
+pip install virtualenv
