@@ -78,5 +78,36 @@ describe 'IAM roles and policies' do
                       'Resource' => '*'
                   }))
     end
+
+    it 'allows ECS service lookup' do
+      expect(policy_document['Statement'])
+          .to(include(
+                  {
+                      'Sid' => '',
+                      'Effect' => 'Allow',
+                      'Action' => [
+                          'ecs:ListTasks',
+                          'ecs:DescribeTasks',
+                          'ecs:DescribeContainerInstances',
+                          'ec2:DescribeInstances'
+                      ],
+                      'Resource' => '*'
+                  }))
+    end
+
+    it 'allows Route53 record set management' do
+      expect(policy_document['Statement'])
+          .to(include(
+                  {
+                      'Sid' => '',
+                      'Effect' => 'Allow',
+                      'Action' => [
+                          'route53:ListResourceRecordSets',
+                          'route53:GetChange',
+                          'route53:ChangeResourceRecordSets'
+                      ],
+                      'Resource' => '*'
+                  }))
+    end
   end
 end

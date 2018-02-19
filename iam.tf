@@ -20,6 +20,27 @@ data "aws_iam_policy_document" "ecs_route53_registration_lambda_role_policy_docu
 
     resources = ["*"]
   }
+
+  statement {
+    actions = [
+      "ecs:ListTasks",
+      "ecs:DescribeTasks",
+      "ecs:DescribeContainerInstances",
+      "ec2:DescribeInstances"
+    ]
+
+    resources = ["*"]
+  }
+
+  statement {
+    actions = [
+      "route53:ListResourceRecordSets",
+      "route53:GetChange",
+      "route53:ChangeResourceRecordSets"
+    ]
+
+    resources = ["*"]
+  }
 }
 
 resource "aws_iam_role" "ecs_route53_registration_lambda_role" {

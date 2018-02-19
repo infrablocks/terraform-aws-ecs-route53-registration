@@ -17,5 +17,15 @@ describe 'Lambdas' do
     its(:role) do
       should eq(output_for(:harness, 'lambda_role_arn'))
     end
+
+    it 'has correct environment' do
+      expect(subject.environment.variables)
+          .to(eq({
+                     'SERVICE_NAME' => vars.service_name,
+                     'HOSTED_ZONE_ID' => vars.hosted_zone_id,
+                     'RECORD_SET_NAME_TEMPLATE' => vars.record_set_name_template,
+                     'RECORD_SET_IP_TYPE' => vars.record_set_ip_type
+                 }))
+    end
   end
 end
