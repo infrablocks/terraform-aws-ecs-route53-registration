@@ -36,7 +36,13 @@ class Route53ARecordSet(object):
                 'and name: %s',
                 resource_record_sets, hosted_zone_id, self.name)
 
-            records = resource_record_sets[0]['ResourceRecords']
+            if resource_record_sets:
+                records = resource_record_sets[0]['ResourceRecords']
+            else:
+                self.logger.info(
+                    'Attempting to delete and no resource record set found '
+                    'for: %s. Ignoring.', self.name)
+                return
 
         self.logger.info(
             'Changing resource record set for: %s using action: %s with '
@@ -82,4 +88,5 @@ class Route53ARecordSet(object):
                 'MaxAttempts': wait_maximum_attempts
             })
 
-        self.logger.info('Change with ID: %s successfully applied.', change_id)
+        self.logger.info(
+            'Change with ID: %s successfully applied.', change_id)

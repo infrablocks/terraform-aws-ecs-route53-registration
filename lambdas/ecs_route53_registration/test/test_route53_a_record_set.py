@@ -167,3 +167,29 @@ class TestRoute53ARecordSet(unittest.TestCase):
                 'Delay': 10,
                 'MaxAttempts': 30
             })
+
+    def test_does_nothing_when_no_ip_addresses_present_and_no_record(self):
+        route53 = Mock(name='Route53 client')
+        logger = Mock(name='Logger')
+
+        hosted_zone_id = random_hosted_zone_id()
+        record_set_name = random_fqdn()
+        ip_addresses = []
+
+        route53.list_resource_record_sets = Mock(
+            name='List resource record sets',
+            return_value={
+                'ResourceRecordSets': []
+            })
+
+        route53.change_resource_record_sets = Mock(
+            name='Change resource record sets')
+        route53.get_waiter = Mock(name="Route53 waiter")
+
+        route53_a_record_set = Route53ARecordSet(
+            record_set_name, ip_addresses, route53, logger)
+
+        route53_a_record_set.synchronise_with(hosted_zone_id)
+
+        route53.change_resource_record_sets.assert_not_called()
+        route53.get_waiter.assert_not_called()
