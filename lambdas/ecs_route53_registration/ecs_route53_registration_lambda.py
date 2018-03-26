@@ -107,6 +107,7 @@ def amend_route53_for(event, context):
     # allow different DNS names for a single service
     #   group IP addresses by resulting record set names and create a record set
     #   for each record set name
+    # be more strict when multiple resource record sets are found on delete
 
     # TASK_INTROSPECTION_NEEDED=("yes" or "no")
     # TASK_INTROSPECTION_PORT
