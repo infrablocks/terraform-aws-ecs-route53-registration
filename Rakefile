@@ -19,7 +19,7 @@ namespace :virtualenv do
   desc "Create virtualenv."
   task :create do
     mkdir_p 'vendor'
-    sh 'virtualenv vendor/virtualenv --no-site-packages'
+    sh 'python -m venv vendor/virtualenv'
   end
 
   desc "Destroy virtualenv."
