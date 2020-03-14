@@ -1,6 +1,8 @@
 variable "region" {}
 variable "vpc_cidr" {}
-variable "availability_zones" {}
+variable "availability_zones" {
+  type = list(string)
+}
 variable "private_network_cidr" {}
 
 variable "component" {}
