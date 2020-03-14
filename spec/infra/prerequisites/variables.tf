@@ -19,7 +19,7 @@ variable "cluster_desired_capacity" {}
 variable "service_name" {}
 variable "service_image" {}
 variable "service_command" {
-  type = "list"
+  type = list(string)
 }
 variable "service_task_container_definitions" {}
 variable "service_task_network_mode" {}
@@ -34,7 +34,7 @@ variable "service_certificate_private_key" {}
 
 variable "service_role" {}
 variable "service_volumes" {
-  type = "list"
+  type = list(string)
 }
 
 variable "attach_to_load_balancer" {}

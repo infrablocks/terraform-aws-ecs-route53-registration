@@ -1,0 +1,13 @@
+---
+source_directory: "spec/infra/harness"
+state_file: "%{hiera('project_directory')}/state/harness.tfstate"
+vars:
+  region: "%{hiera('region')}"
+
+  deployment_identifier: "%{hiera('deployment_identifier')}"
+
+  service_name: "%{hiera('service_name')}"
+  hosted_zone_id: "%{hiera('hosted_zone_id')}"
+
+  record_set_name_template: "%{hiera('record_set_name_template')}"
+  record_set_ip_type: "%{hiera('record_set_ip_type')}"

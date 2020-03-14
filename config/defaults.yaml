@@ -1,16 +1,21 @@
 ---
-vpc_cidr: "10.1.0.0/16"
 region: 'eu-west-2'
+
+hosted_zone_id: 'Z2CDAFD23Q10HO'
+
+record_set_name_template: 'service-1.greasedscone.uk'
+record_set_ip_type: 'private'
+
+vpc_cidr: "10.1.0.0/16"
 availability_zones: 'eu-west-2a,eu-west-2b'
 private_network_cidr: '10.0.0.0/8'
 
 component: 'test'
-deployment_identifier: '<%= @deployment_identifier %>'
 
 private_zone_id: 'Z2CDAFD23Q10HO'
 
 cluster_name: 'test-cluster'
-cluster_instance_ssh_public_key_path: '<%= @project_directory %>/config/secrets/keys/cluster/ssh.public'
+cluster_instance_ssh_public_key_path: "%{hiera('project_directory')}/config/secrets/keys/cluster/ssh.public"
 cluster_instance_type: 't2.medium'
 cluster_instance_ami: 'ami-3fb6bc5b'
 
@@ -32,11 +37,9 @@ service_role: ''
 
 attach_to_load_balancer: 'no'
 
-service_certificate_body: '<%= @project_directory %>/config/secrets/certificates/cert.pem'
-service_certificate_private_key: '<%= @project_directory %>/config/secrets/certificates/ssl.key'
+service_certificate_body: "%{hiera('project_directory')}/config/secrets/certificates/cert.pem"
+service_certificate_private_key: "%{hiera('project_directory')}/config/secrets/certificates/ssl.key"
 
 service_volume_1_name: "temporary"
 service_volume_1_host_path: "/some/path"
 service_volumes: '[{ name = "temporary" host_path = "/some/path" }]'
-
-infrastructure_events_bucket: 'tobyclemson-open-source'

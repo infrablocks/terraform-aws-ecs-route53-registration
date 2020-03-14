@@ -29,8 +29,8 @@ module "ecs_route53_registration" {
 ```
 
 As mentioned above, the registration lambda works with an existing base network 
-and ECS cluster for an existing ECS service. Whilst these can be created using any 
-mechanism you like, the following modules may be of use: 
+and ECS cluster for an existing ECS service. Whilst these can be created using 
+any mechanism you like, the following modules may be of use: 
 * [AWS Base Networking](https://github.com/infrablocks/terraform-aws-base-networking)
 * [AWS ECS Cluster](https://github.com/infrablocks/terraform-aws-ecs-cluster)
 * [AWS ECS Service](https://github.com/infrablocks/terraform-aws-ecs-service)
@@ -53,8 +53,8 @@ Development
 
 ### Machine Requirements
 
-In order for the build to run correctly, a few tools will need to be installed on your
-development machine:
+In order for the build to run correctly, a few tools will need to be installed 
+on your development machine:
 
 * Ruby (2.3.1)
 * Bundler
@@ -103,8 +103,8 @@ direnv allow <repository-directory>
 
 ### Running the build
 
-To provision module infrastructure, run tests and then destroy that infrastructure,
-execute:
+To provision module infrastructure, run tests and then destroy that 
+infrastructure, execute:
 
 ```bash
 ./go
@@ -171,12 +171,15 @@ openssl aes-256-cbc \
 Contributing
 ------------
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/tobyclemson/terraform-aws-ecs-cluster. 
-This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to 
+Bug reports and pull requests are welcome on GitHub at 
+https://github.com/infrablocks/terraform-aws-ecs-route53-registration. 
+This project is intended to be a safe, welcoming space for collaboration, and 
+contributors are expected to adhere to 
 the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 License
 -------
 
-The library is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+The library is available as open source under the terms of the 
+[MIT License](http://opensource.org/licenses/MIT).
