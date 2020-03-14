@@ -38,5 +38,3 @@ variable "service_volumes" {
 }
 
 variable "attach_to_load_balancer" {}
-
-variable "infrastructure_events_bucket" {}
