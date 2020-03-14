@@ -24,8 +24,8 @@ module "ecs_cluster" {
 
   region = var.region
   vpc_id = module.base_network.vpc_id
-  private_subnet_ids = module.base_network.private_subnet_ids
-  private_network_cidr = var.private_network_cidr
+  subnet_ids = module.base_network.private_subnet_ids
+  allowed_cidrs = [var.private_network_cidr]
 
   component = var.component
   deployment_identifier = var.deployment_identifier
