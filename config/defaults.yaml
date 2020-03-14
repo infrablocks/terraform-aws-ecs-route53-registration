@@ -45,4 +45,6 @@ service_certificate_private_key: "%{hiera('project_directory')}/config/secrets/c
 
 service_volume_1_name: "temporary"
 service_volume_1_host_path: "/some/path"
-service_volumes: '[{ name = "temporary" host_path = "/some/path" }]'
+service_volumes:
+  - name: "temporary"
+    host_path: "/some/path"

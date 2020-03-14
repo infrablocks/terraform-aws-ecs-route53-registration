@@ -34,7 +34,7 @@ variable "service_certificate_private_key" {}
 
 variable "service_role" {}
 variable "service_volumes" {
-  type = list(string)
+  type = list(map(string))
 }
 
 variable "attach_to_load_balancer" {}
