@@ -13,7 +13,7 @@ module "ecs_route53_registration" {
 
   deployment_identifier = var.deployment_identifier
 
-  cluster_arn = data.terraform_remote_state.prerequisites.cluster_arn
+  cluster_arn = data.terraform_remote_state.prerequisites.outputs.cluster_arn
 
   service_name = var.service_name
   hosted_zone_id = var.hosted_zone_id
