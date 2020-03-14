@@ -1,7 +1,7 @@
 data "template_file" "cluster_task_events_pattern" {
   template = file("${path.module}/templates/cluster-task-events-pattern.json.tpl")
 
-  vars {
+  vars = {
     cluster_arn = var.cluster_arn
   }
 }
