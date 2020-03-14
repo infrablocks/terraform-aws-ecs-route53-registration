@@ -35,7 +35,7 @@ service_name: "service-1"
 service_image: "nginx"
 service_command:
   - "nginx"
-  - "-g",
+  - "-g"
   - "daemon off;"
 service_port: 80
 service_desired_count: 2
