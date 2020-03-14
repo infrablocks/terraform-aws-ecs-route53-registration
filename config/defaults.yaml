@@ -1,6 +1,9 @@
 ---
 region: 'eu-west-2'
 
+work_directory: 'build'
+configuration_directory: "%{hiera('work_directory')}/%{hiera('source_directory')}"
+
 hosted_zone_id: 'Z2CDAFD23Q10HO'
 
 record_set_name_template: 'service-1.greasedscone.uk'
