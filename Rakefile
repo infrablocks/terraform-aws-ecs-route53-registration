@@ -99,6 +99,7 @@ RakeCircleCI.define_project_tasks(
         File.read('config/secrets/ci/encryption.passphrase')
             .chomp
   }
+  t.checkout_keys = []
   t.ssh_keys = [
     {
       hostname: 'github.com',
