@@ -26,7 +26,7 @@ def latest_tag
   end.max
 end
 
-task default: 'test:integration'
+task default: 'test:all'
 
 RakeTerraform.define_installation_tasks(
   path: File.join(Dir.pwd, 'vendor', 'terraform'),
