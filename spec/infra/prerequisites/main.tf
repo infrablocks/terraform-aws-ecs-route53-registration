@@ -6,7 +6,7 @@ resource "aws_iam_server_certificate" "service" {
 
 module "base_network" {
   source = "infrablocks/base-networking/aws"
-  version = "3.0.0"
+  version = "4.0.0"
 
   vpc_cidr = var.vpc_cidr
   region = var.region
@@ -20,7 +20,7 @@ module "base_network" {
 
 module "ecs_cluster" {
   source = "infrablocks/ecs-cluster/aws"
-  version = "3.5.0-rc.2"
+  version = "4.0.0"
 
   region = var.region
   vpc_id = module.base_network.vpc_id
@@ -41,7 +41,7 @@ module "ecs_cluster" {
 
 module "ecs_service" {
   source = "infrablocks/ecs-service/aws"
-  version = "3.3.0-rc.1"
+  version = "4.0.0"
 
   component = var.component
   deployment_identifier = var.deployment_identifier
