@@ -35,6 +35,9 @@ any mechanism you like, the following modules may be of use:
 * [AWS ECS Cluster](https://github.com/infrablocks/terraform-aws-ecs-cluster)
 * [AWS ECS Service](https://github.com/infrablocks/terraform-aws-ecs-service)
 
+See the 
+[Terraform registry entry](https://registry.terraform.io/modules/infrablocks/ecs-route53-registration/aws/latest) 
+for more details.
 
 ### Inputs
 
@@ -47,6 +50,10 @@ any mechanism you like, the following modules may be of use:
 | Name                      | Description                                                          |
 |---------------------------|----------------------------------------------------------------------|
 
+### Compatibility
+
+This module is compatible with Terraform versions greater than or equal to 
+Terraform 0.14.
 
 Development
 -----------
