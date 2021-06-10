@@ -12,7 +12,12 @@ apt-get install -y --no-install-recommends \
 
 curl https://pyenv.run | bash
 
-$SHELL
+echo "/root"
+ls -la /root
+
+echo "HOME"
+echo "$HOME"
+ls -la "$HOME"
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
