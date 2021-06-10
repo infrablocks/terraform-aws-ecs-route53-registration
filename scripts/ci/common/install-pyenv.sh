@@ -12,20 +12,14 @@ apt-get install -y --no-install-recommends \
 
 curl https://pyenv.run | bash
 
-echo "/root"
-ls -la /root
-
-echo "HOME"
-echo "$HOME"
-ls -la "$HOME"
-
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
-env
+pwd
+ls -la
 
 pyenv install
 pip install --upgrade pip
