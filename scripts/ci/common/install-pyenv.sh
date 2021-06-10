@@ -21,6 +21,9 @@ eval "$(pyenv virtualenv-init -)"
 pwd
 ls -la
 
+cat .python-version
+pyenv install --list
+
 pyenv install
 pip install --upgrade pip
 pip install virtualenv
