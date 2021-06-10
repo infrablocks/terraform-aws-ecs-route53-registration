@@ -24,6 +24,6 @@ ls -la
 cat .python-version
 pyenv install --list
 
-pyenv install
+pyenv install "$(cat .python-version)"
 pip install --upgrade pip
 pip install virtualenv
