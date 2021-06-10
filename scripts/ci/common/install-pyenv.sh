@@ -18,12 +18,6 @@ eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
-pwd
-ls -la
-
-cat .python-version
-pyenv install --list
-
 pyenv install "$(cat .python-version)"
 pip install --upgrade pip
 pip install virtualenv
