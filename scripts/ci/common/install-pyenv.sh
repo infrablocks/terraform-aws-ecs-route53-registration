@@ -10,13 +10,17 @@ apt-get install -y --no-install-recommends \
     libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils \
     tk-dev libffi-dev liblzma-dev python-openssl git
 
-curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
+curl https://pyenv.run | bash
+
+$SHELL
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
+env
 
 pyenv install
 pip install --upgrade pip
