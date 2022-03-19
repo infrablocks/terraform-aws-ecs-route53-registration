@@ -21,7 +21,7 @@ describe 'IAM roles and policies' do
                     "deployment identifier: #{deployment_identifier})")}
 
     it 'can be assumed by the lambda service' do
-      expect(JSON.parse(URI.decode(subject.assume_role_policy_document)))
+      expect(JSON.parse(CGI.unescape(subject.assume_role_policy_document)))
           .to(include(
                   {
                       'Statement' => [
@@ -49,7 +49,7 @@ describe 'IAM roles and policies' do
               version_id: subject.default_version_id,
           })
 
-      JSON.parse(URI.decode(
+      JSON.parse(CGI.unescape(
           policy_version_response.policy_version.document))
     end
 
