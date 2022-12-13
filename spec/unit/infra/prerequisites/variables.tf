@@ -27,16 +27,7 @@ variable "service_task_container_definitions" {}
 variable "service_task_network_mode" {}
 
 variable "service_port" {}
-variable "service_desired_count" {}
-variable "service_deployment_maximum_percent" {}
-variable "service_deployment_minimum_healthy_percent" {}
-
-variable "service_certificate_body" {}
-variable "service_certificate_private_key" {}
 
 variable "service_role" {}
-variable "service_volumes" {
-  type = list(map(string))
-}
 
 variable "attach_to_load_balancer" {}

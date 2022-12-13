@@ -1,26 +1,22 @@
-resource "aws_iam_server_certificate" "service" {
-  name = "wildcard-certificate-${var.component}-${var.deployment_identifier}"
-  private_key = file(var.service_certificate_private_key)
-  certificate_body = file(var.service_certificate_body)
-}
-
 module "base_network" {
-  source = "infrablocks/base-networking/aws"
-  version = "4.0.0"
+  source  = "infrablocks/base-networking/aws"
+  version = "4.1.0-rc.5"
 
-  vpc_cidr = var.vpc_cidr
   region = var.region
+  vpc_cidr = var.vpc_cidr
   availability_zones = var.availability_zones
 
   component = var.component
   deployment_identifier = var.deployment_identifier
 
   private_zone_id = var.private_zone_id
+
+  include_nat_gateways = "no"
 }
 
 module "ecs_cluster" {
-  source = "infrablocks/ecs-cluster/aws"
-  version = "4.1.0"
+  source  = "infrablocks/ecs-cluster/aws"
+  version = "4.3.0-rc.3"
 
   region = var.region
   vpc_id = module.base_network.vpc_id
@@ -41,7 +37,7 @@ module "ecs_cluster" {
 
 module "ecs_service" {
   source = "infrablocks/ecs-service/aws"
-  version = "4.0.0"
+  version = "4.2.0-rc.8"
 
   component = var.component
   deployment_identifier = var.deployment_identifier
@@ -57,12 +53,7 @@ module "ecs_service" {
   service_command = var.service_command
   service_port = var.service_port
 
-  service_desired_count = var.service_desired_count
-  service_deployment_maximum_percent = var.service_deployment_maximum_percent
-  service_deployment_minimum_healthy_percent = var.service_deployment_minimum_healthy_percent
-
   service_role = var.service_role
-  service_volumes = var.service_volumes
 
   attach_to_load_balancer = var.attach_to_load_balancer
 

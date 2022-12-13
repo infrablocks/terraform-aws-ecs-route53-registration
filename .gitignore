@@ -12,6 +12,7 @@
 vendor/
 build/
 dist/
+.bundle
 .rakeTasks
 
 # OS
@@ -23,14 +24,18 @@ run/logs/
 *.log
 .tmp
 
-# Python
-__pycache__
-.pyc
-
 # RSpec
 .rspec_status
 
+# Python
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
 # Terraform
+state/
 .terraform
+*.tfplan
 *.tfstate
 *.tfstate.backup

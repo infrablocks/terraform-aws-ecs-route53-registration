@@ -12,7 +12,7 @@ resource "aws_lambda_function" "ecs_route53_registration" {
 
   handler = "ecs_route53_registration_lambda.amend_route53_for"
 
-  runtime = "python3.6"
+  runtime = "python3.9"
   timeout = 300
 
   role = aws_iam_role.ecs_route53_registration_lambda_role.arn
